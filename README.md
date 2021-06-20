@@ -34,7 +34,7 @@ It includes several advanced features as follows:
 
 ### Installation
 To install JLite CRM in your server, follow the below steps:
-1. Clone the repository with **git clone**
+1. Clone the repository with **git clone** / Download and extract the files from the repository **JLite-CRM**
 2. Copy **.env.example **file to **.env**
 3. Edit **.env** file with the details such as app url, app name, database credentials, mail, and other credentials wherever needed.
 4. Run **composer install** or **php composer.phar install **
