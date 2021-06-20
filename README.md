@@ -47,8 +47,8 @@ _**Note:** **Seed is mandatory as it will create the first admin user.**_
 9. For file or image attachments, run **php artisan storage:link** command
 10. Start php server with command **php artisan serve**
 11. Launch the main **URL**.
-12. To log in to adminpanel, go to **/login** URL and log in with credentials
-_Username: admin@admin.com
-Password: password_
+12. To log in to adminpanel, go to **/login** URL and log in with credentials <br/>
+_Username: admin@admin.com <br/>
+Password: password_ <br/>
 13. For other users, email address is user's email and password is user's password
 
