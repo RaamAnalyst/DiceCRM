@@ -43,7 +43,7 @@ To install JLite CRM in your server, follow the below steps:
 6. Go to **config** folder and open **database.php**. Rewrite charset to '**utf8**' and collation to '**utf8_unicode_ci**'
 7. Run **php artisan key:generate**
 8. Run **php artisan migrate --seed **
-***Note:***  *Seed is mandatory as it will create the first admin user.*
+Note: Seed is mandatory as it will create the first admin user.
 9. For file or image attachments, run **php artisan storage:link** command
 10. Start php server with command **php artisan serve**
 11. Launch the main **URL**.
