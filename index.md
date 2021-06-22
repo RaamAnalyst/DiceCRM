@@ -3,7 +3,7 @@ JLite CRM is an open source CRM tool to manage projects, clients, leads, appoint
 
 _Current Version: 0.0.1_
 
-<img src="/JLite_Screen.png" alt="JLite-CRM"/>
+<img src="JLite_Screen.png" alt="JLite-CRM"/>
 
 ### Features of JLite-CRM
 It includes several advanced features as follows:
