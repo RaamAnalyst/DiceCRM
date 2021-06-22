@@ -1,37 +1,54 @@
-## Welcome to GitHub Pages
+### Table of Contents
+- [JLite-CRM](#jlite-crm)
+- [Features of JLite-CRM](#features-of-jlite-crm)
+- [Requirements](#requirements)
+- [Installation](#installation)
 
-You can use the [editor on GitHub](https://github.com/RaamAnalyst/JLite-CRM/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### JLite-CRM
+JLite CRM is an open source CRM tool to manage projects, clients, leads, appointments, and users. JLite CRM is a free, open-source, and self-hosted platform based on Laravel Framework 8.
 
-### Markdown
+_Current Version: 0.0.1_
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<img src="/JLite Screen.png" alt="JLite-CRM"/>
 
-```markdown
-Syntax highlighted code block
+### Features of JLite-CRM
+It includes several advanced features as follows:
 
-# Header 1
-## Header 2
-### Header 3
+- Client Management
+- Project Management
+- Task Management
+- Leads Management
+- Track Appointments in Calendar
+- Manage Industries, Departments, and Status
+- User Alerts and Notifications
+- User Management
+- Messaging System
+- Multi-tenancy Architecture
+- Dashboard Summary
 
-- Bulleted
-- List
+### Requirements
+- PHP >= 7.4
+- Composer >= 1.0
+- Laravel >= 8.0
+- MySQL
 
-1. Numbered
-2. List
+### Installation
+To install JLite CRM in your server, follow the below steps:
+1. Clone the repository with **git clone** / Download and extract the files from the repository **JLite-CRM**
+2. Copy **.env.example** file to **.env**
+3. Edit **.env** file with the details such as app url, app name, database credentials, mail, and other credentials wherever needed.
+4. Run **composer install** or **php composer.phar install**
+5. Remove the specific packages from **composer.json** if any error occurs
+6. Go to **config** folder and open **database.php**. Rewrite charset to '**utf8**' and collation to '**utf8_unicode_ci**'
+7. Run **php artisan key:generate**
+8. Run **php artisan migrate --seed** <br/>
+_**Note:** **Seed is mandatory as it will create the first admin user.**_
+9. For file or image attachments, run **php artisan storage:link** command
+10. Start php server with command **php artisan serve**
+11. Launch the main **URL**.
+12. To log in to adminpanel, go to **/login** URL and log in with credentials <br/>
+_Username: admin@admin.com <br/>
+Password: password_ <br/>
+13. For other users, email address is user's email and password is user's password
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/RaamAnalyst/JLite-CRM/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
