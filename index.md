@@ -1,10 +1,3 @@
-### Table of Contents
-- [JLite-CRM](#jlite-crm)
-- [Features of JLite-CRM](#features-of-jlite-crm)
-- [Requirements](#requirements)
-- [Installation](#installation)
-
-
 ### JLite-CRM
 JLite CRM is an open source CRM tool to manage projects, clients, leads, appointments, and users. JLite CRM is a free, open-source, and self-hosted platform based on Laravel Framework 8.
 
