@@ -56,4 +56,4 @@ Password: password_ <br/>
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ### License
-This project is licensed under an [MIT license] (https://github.com/RaamAnalyst/JLite-CRM/blob/main/LICENSE).
+This project is licensed under an [MIT license](https://github.com/RaamAnalyst/JLite-CRM/blob/main/LICENSE).
