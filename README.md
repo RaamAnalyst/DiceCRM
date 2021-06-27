@@ -52,3 +52,8 @@ _Username: admin@admin.com <br/>
 Password: password_ <br/>
 13. For other users, email address is user's email and password is user's password
 
+### Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### License
+This project is licensed under an [MIT license] (https://github.com/RaamAnalyst/JLite-CRM/blob/main/LICENSE).
