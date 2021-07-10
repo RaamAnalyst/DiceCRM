@@ -1,11 +1,11 @@
-### JLite-CRM
-JLite CRM is an open source CRM tool to manage projects, clients, leads, appointments, and users. JLite CRM is a free, open-source, and self-hosted platform based on Laravel Framework 8.
+### DiceCRM
+DiceCRM is an open source CRM tool to manage projects, clients, leads, appointments, and users. JLite CRM is a free, open-source, and self-hosted platform based on Laravel Framework 8.
 
 _Current Version: 0.0.1_
 
-<img src="https://raamanalyst.github.io/JLite-CRM/JLite_Screen.png" alt="JLite-CRM"/>
+<img src="https://raamanalyst.github.io/DiceCRM/JLite_Screen.png" alt="JLite-CRM"/>
 
-### Features of JLite-CRM
+### Features of DiceCRM
 It includes several advanced features as follows:
 
 - Client Management
@@ -27,8 +27,8 @@ It includes several advanced features as follows:
 - MySQL
 
 ### Installation
-To install JLite CRM in your server, follow the below steps:
-1. Clone the repository with **git clone** / Download and extract the files from the repository **JLite-CRM**
+To install DiceCRM in your server, follow the below steps:
+1. Clone the repository with **git clone** / Download and extract the files from the repository **DiceCRM**
 2. Copy **.env.example** file to **.env**
 3. Edit **.env** file with the details such as app url, app name, database credentials, mail, and other credentials wherever needed.
 4. Run **composer install** or **php composer.phar install**
