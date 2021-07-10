@@ -1,18 +1,18 @@
 ### Table of Contents
-- [JLite-CRM](#jlite-crm)
-- [Features of JLite-CRM](#features-of-jlite-crm)
+- [DiceCRM](#dicecrm)
+- [Features of DiceCRM](#features-of-dicecrm)
 - [Requirements](#requirements)
 - [Installation](#installation)
 
 
-### JLite-CRM
-JLite CRM is an open source CRM tool to manage projects, clients, leads, appointments, and users. JLite CRM is a free, open-source, and self-hosted platform based on Laravel Framework 8.
+### DiceCRM
+DiceCRM is an open source CRM tool to manage projects, clients, leads, appointments, and users. DiceCRM is a free, open-source, and self-hosted platform based on Laravel Framework 8.
 
 _Current Version: 0.0.1_
 
 <img src="/JLite Screen.png" alt="JLite-CRM"/>
 
-### Features of JLite-CRM
+### Features of DiceCRM
 It includes several advanced features as follows:
 
 - Client Management
@@ -23,7 +23,6 @@ It includes several advanced features as follows:
 - Manage Industries, Departments, and Status
 - User Alerts and Notifications
 - User Management
-- Messaging System
 - Multi-tenancy Architecture
 - Dashboard Summary
 
@@ -34,8 +33,8 @@ It includes several advanced features as follows:
 - MySQL
 
 ### Installation
-To install JLite CRM in your server, follow the below steps:
-1. Clone the repository with **git clone** / Download and extract the files from the repository **JLite-CRM**
+To install DiceCRM in your server, follow the below steps:
+1. Clone the repository with **git clone** / Download and extract the files from the repository **DiceCRM**
 2. Copy **.env.example** file to **.env**
 3. Edit **.env** file with the details such as app url, app name, database credentials, mail, and other credentials wherever needed.
 4. Run **composer install** or **php composer.phar install**
@@ -56,4 +55,4 @@ Password: password_ <br/>
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ### License
-This project is licensed under an [MIT license](https://github.com/RaamAnalyst/JLite-CRM/blob/main/LICENSE).
+This project is licensed under an [MIT license](https://github.com/RaamAnalyst/DiceCRM/blob/main/LICENSE).
