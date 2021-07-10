@@ -56,6 +56,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ### License
 This project is licensed under an [MIT license](https://github.com/RaamAnalyst/DiceCRM/blob/main/LICENSE).
-
-### Download
-Download this product from SourceForge. [![Download DiceCRM](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/jlite-crm/files/latest/download)
