@@ -3,7 +3,7 @@ DiceCRM is an open source CRM tool to manage projects, clients, leads, appointme
 
 _Current Version: 0.0.1_
 
-<img src="https://raamanalyst.github.io/DiceCRM/JLite_Screen.png" alt="JLite-CRM"/>
+<img src="https://raamanalyst.github.io/DiceCRM/DiceCRM.png" alt="DiceCRM"/>
 
 ### Features of DiceCRM
 It includes several advanced features as follows:
