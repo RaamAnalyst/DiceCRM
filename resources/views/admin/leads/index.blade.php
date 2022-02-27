@@ -44,6 +44,9 @@
                         {{ trans('cruds.lead.fields.qualified') }}
                     </th>
                     <th>
+                        {{ trans('cruds.lead.fields.leads_doc') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -105,6 +108,7 @@
 { data: 'deadline', name: 'deadline' },
 { data: 'status_status', name: 'status.status' },
 { data: 'qualified', name: 'qualified' },
+{ data: 'leads_doc', name: 'leads_doc', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

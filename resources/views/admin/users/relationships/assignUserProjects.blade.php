@@ -37,6 +37,9 @@
                                 {{ trans('cruds.project.fields.status') }}
                             </th>
                             <th>
+                                {{ trans('cruds.project.fields.project_docs') }}
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -61,6 +64,13 @@
                                 </td>
                                 <td>
                                     {{ $project->status->status ?? '' }}
+                                </td>
+                                <td>
+                                    @foreach($project->project_docs as $key => $media)
+                                        <a href="{{ $media->getUrl() }}" target="_blank">
+                                            {{ trans('global.view_file') }}
+                                        </a>
+                                    @endforeach
                                 </td>
                                 <td>
                                     @can('project_show')

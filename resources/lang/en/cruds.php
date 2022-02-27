@@ -197,6 +197,8 @@ return [
             'deleted_at_helper'          => ' ',
             'created_by'                 => 'Created By',
             'created_by_helper'          => ' ',
+            'project_docs'               => 'Project Files Upload',
+            'project_docs_helper'        => 'Project Documents',
         ],
     ],
     'task' => [
@@ -255,6 +257,8 @@ return [
             'deleted_at_helper'       => ' ',
             'created_by'              => 'Created By',
             'created_by_helper'       => ' ',
+            'leads_doc'               => 'Leads File Uploads',
+            'leads_doc_helper'        => 'Leads File Uploads',
         ],
     ],
     'appointment' => [

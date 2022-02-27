@@ -27,6 +27,10 @@ class ProjectApiController extends Controller
     {
         $project = Project::create($request->all());
 
+        foreach ($request->input('project_docs', []) as $file) {
+            $project->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('project_docs');
+        }
+
         return (new ProjectResource($project))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
@@ -42,6 +46,20 @@ class ProjectApiController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $project->update($request->all());
+
+        if (count($project->project_docs) > 0) {
+            foreach ($project->project_docs as $media) {
+                if (!in_array($media->file_name, $request->input('project_docs', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $project->project_docs->pluck('file_name')->toArray();
+        foreach ($request->input('project_docs', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $project->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('project_docs');
+            }
+        }
 
         return (new ProjectResource($project))
             ->response()

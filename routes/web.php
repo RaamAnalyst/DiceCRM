@@ -90,15 +90,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
-    Route::get('messenger', 'MessengerController@index')->name('messenger.index');
-    Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
-    Route::post('messenger', 'MessengerController@storeTopic')->name('messenger.storeTopic');
-    Route::get('messenger/inbox', 'MessengerController@showInbox')->name('messenger.showInbox');
-    Route::get('messenger/outbox', 'MessengerController@showOutbox')->name('messenger.showOutbox');
-    Route::get('messenger/{topic}', 'MessengerController@showMessages')->name('messenger.showMessages');
-    Route::delete('messenger/{topic}', 'MessengerController@destroyTopic')->name('messenger.destroyTopic');
-    Route::post('messenger/{topic}/reply', 'MessengerController@replyToTopic')->name('messenger.reply');
-    Route::get('messenger/{topic}/reply', 'MessengerController@showReply')->name('messenger.showReply');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

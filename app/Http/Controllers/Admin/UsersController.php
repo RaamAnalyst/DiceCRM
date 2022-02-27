@@ -20,35 +20,35 @@ class UsersController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = User::with(['roles'])->select(sprintf('%s.*', (new User)->table));
+            $query = User::with(['roles'])->select(sprintf('%s.*', (new User())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'user_show';
-                $editGate      = 'user_edit';
-                $deleteGate    = 'user_delete';
+                $viewGate = 'user_show';
+                $editGate = 'user_edit';
+                $deleteGate = 'user_delete';
                 $crudRoutePart = 'users';
 
                 return view('partials.datatablesActions', compact(
-                    'viewGate',
-                    'editGate',
-                    'deleteGate',
-                    'crudRoutePart',
-                    'row'
-                ));
+                'viewGate',
+                'editGate',
+                'deleteGate',
+                'crudRoutePart',
+                'row'
+            ));
             });
 
             $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : "";
+                return $row->id ? $row->id : '';
             });
             $table->editColumn('name', function ($row) {
-                return $row->name ? $row->name : "";
+                return $row->name ? $row->name : '';
             });
             $table->editColumn('email', function ($row) {
-                return $row->email ? $row->email : "";
+                return $row->email ? $row->email : '';
             });
 
             $table->editColumn('approved', function ($row) {
@@ -59,7 +59,6 @@ class UsersController extends Controller
             });
             $table->editColumn('roles', function ($row) {
                 $labels = [];
-
                 foreach ($row->roles as $role) {
                     $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $role->title);
                 }
@@ -67,7 +66,7 @@ class UsersController extends Controller
                 return implode(' ', $labels);
             });
             $table->editColumn('phone_number', function ($row) {
-                return $row->phone_number ? $row->phone_number : "";
+                return $row->phone_number ? $row->phone_number : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'approved', 'verified', 'roles']);
@@ -82,7 +81,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::all()->pluck('title', 'id');
+        $roles = Role::pluck('title', 'id');
 
         return view('admin.users.create', compact('roles'));
     }
@@ -99,7 +98,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $roles = Role::all()->pluck('title', 'id');
+        $roles = Role::pluck('title', 'id');
 
         $user->load('roles');
 

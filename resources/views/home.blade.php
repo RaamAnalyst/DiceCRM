@@ -19,7 +19,7 @@
                         <div class="{{ $settings1['column_class'] }}">
                             <div class="info-box">
                                 <span class="info-box-icon bg-red" style="display:flex; flex-direction: column; justify-content: center;">
-                                    <i class="fa fa-chart-line"></i>
+                                    <i class="fa-fw nav-icon fas fa-users"></i>
                                 </span>
 
                                 <div class="info-box-content">
@@ -33,7 +33,7 @@
                         <div class="{{ $settings2['column_class'] }}">
                             <div class="info-box">
                                 <span class="info-box-icon bg-red" style="display:flex; flex-direction: column; justify-content: center;">
-                                    <i class="fa fa-chart-line"></i>
+                                    <i class="fa-fw nav-icon fas fa-project-diagram"></i>
                                 </span>
 
                                 <div class="info-box-content">
@@ -47,7 +47,7 @@
                         <div class="{{ $settings3['column_class'] }}">
                             <div class="info-box">
                                 <span class="info-box-icon bg-red" style="display:flex; flex-direction: column; justify-content: center;">
-                                    <i class="fa fa-chart-line"></i>
+                                    <i class="fa-fw nav-icon fas fa-tasks"></i>
                                 </span>
 
                                 <div class="info-box-content">
@@ -61,7 +61,7 @@
                         <div class="{{ $settings4['column_class'] }}">
                             <div class="info-box">
                                 <span class="info-box-icon bg-red" style="display:flex; flex-direction: column; justify-content: center;">
-                                    <i class="fa fa-chart-line"></i>
+                                    <i class="fa-fw nav-icon fas fa-people-carry"></i>
                                 </span>
 
                                 <div class="info-box-content">
@@ -92,7 +92,7 @@
                                     <tr>
                                         @foreach($settings8['fields'] as $key => $value)
                                             <th>
-                                                {{ trans(sprintf('cruds.%s.fields.%s', strtolower(last(explode('\\', $settings8['model']))), $key)) }}
+                                                {{ trans(sprintf('cruds.%s.fields.%s', $settings8['translation_key'] ?? 'pleaseUpdateWidget', $key)) }}
                                             </th>
                                         @endforeach
                                     </tr>
@@ -131,7 +131,7 @@
                                     <tr>
                                         @foreach($settings9['fields'] as $key => $value)
                                             <th>
-                                                {{ trans(sprintf('cruds.%s.fields.%s', strtolower(last(explode('\\', $settings9['model']))), $key)) }}
+                                                {{ trans(sprintf('cruds.%s.fields.%s', $settings9['translation_key'] ?? 'pleaseUpdateWidget', $key)) }}
                                             </th>
                                         @endforeach
                                     </tr>

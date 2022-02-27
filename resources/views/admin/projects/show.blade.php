@@ -71,6 +71,18 @@
                             {{ $project->status->status ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.project.fields.project_docs') }}
+                        </th>
+                        <td>
+                            @foreach($project->project_docs as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
