@@ -23,9 +23,12 @@ class StoreProjectRequest extends FormRequest
                 'max:200',
                 'required',
             ],
-            'deadline'      => [
+            'deadline' => [
                 'required',
                 'date_format:' . config('panel.date_format'),
+            ],
+            'project_docs' => [
+                'array',
             ],
         ];
     }

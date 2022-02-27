@@ -23,12 +23,15 @@ class UpdateLeadRequest extends FormRequest
                 'max:200',
                 'required',
             ],
-            'deadline'   => [
+            'deadline' => [
                 'required',
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
             ],
-            'qualified'  => [
+            'qualified' => [
                 'required',
+            ],
+            'leads_doc' => [
+                'array',
             ],
         ];
     }

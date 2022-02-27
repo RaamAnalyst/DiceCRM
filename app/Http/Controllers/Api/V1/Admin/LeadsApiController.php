@@ -27,6 +27,10 @@ class LeadsApiController extends Controller
     {
         $lead = Lead::create($request->all());
 
+        foreach ($request->input('leads_doc', []) as $file) {
+            $lead->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('leads_doc');
+        }
+
         return (new LeadResource($lead))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
@@ -42,6 +46,20 @@ class LeadsApiController extends Controller
     public function update(UpdateLeadRequest $request, Lead $lead)
     {
         $lead->update($request->all());
+
+        if (count($lead->leads_doc) > 0) {
+            foreach ($lead->leads_doc as $media) {
+                if (!in_array($media->file_name, $request->input('leads_doc', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $lead->leads_doc->pluck('file_name')->toArray();
+        foreach ($request->input('leads_doc', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $lead->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('leads_doc');
+            }
+        }
 
         return (new LeadResource($lead))
             ->response()

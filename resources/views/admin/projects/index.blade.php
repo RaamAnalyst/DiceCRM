@@ -41,6 +41,9 @@
                         {{ trans('cruds.project.fields.status') }}
                     </th>
                     <th>
+                        {{ trans('cruds.project.fields.project_docs') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -101,6 +104,7 @@
 { data: 'assign_user_name', name: 'assign_user.name' },
 { data: 'deadline', name: 'deadline' },
 { data: 'status_status', name: 'status.status' },
+{ data: 'project_docs', name: 'project_docs', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

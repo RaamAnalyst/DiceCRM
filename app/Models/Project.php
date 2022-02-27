@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use \DateTimeInterface;
 use App\Traits\Auditable;
 use App\Traits\MultiTenantModelTrait;
 use Carbon\Carbon;
@@ -11,17 +12,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use \DateTimeInterface;
 
 class Project extends Model implements HasMedia
 {
-    use SoftDeletes, MultiTenantModelTrait, InteractsWithMedia, Auditable, HasFactory;
+    use SoftDeletes;
+    use MultiTenantModelTrait;
+    use InteractsWithMedia;
+    use Auditable;
+    use HasFactory;
 
     public $table = 'projects';
 
     public static $searchable = [
         'project_title',
         'project_description',
+    ];
+
+    protected $appends = [
+        'project_docs',
     ];
 
     protected $dates = [
@@ -44,15 +52,10 @@ class Project extends Model implements HasMedia
         'created_by_id',
     ];
 
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
-
     public static function boot()
     {
         parent::boot();
-        Project::observe(new \App\Observers\ProjectActionObserver);
+        Project::observe(new \App\Observers\ProjectActionObserver());
     }
 
     public function registerMediaConversions(Media $media = null): void
@@ -86,8 +89,18 @@ class Project extends Model implements HasMedia
         return $this->belongsTo(Status::class, 'status_id');
     }
 
+    public function getProjectDocsAttribute()
+    {
+        return $this->getMedia('project_docs');
+    }
+
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

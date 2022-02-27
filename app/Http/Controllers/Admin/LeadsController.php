@@ -20,39 +20,40 @@ use Yajra\DataTables\Facades\DataTables;
 
 class LeadsController extends Controller
 {
-    use MediaUploadingTrait, CsvImportTrait;
+    use MediaUploadingTrait;
+    use CsvImportTrait;
 
     public function index(Request $request)
     {
         abort_if(Gate::denies('lead_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Lead::with(['assign_user', 'assign_client', 'status', 'created_by'])->select(sprintf('%s.*', (new Lead)->table));
+            $query = Lead::with(['assign_user', 'assign_client', 'status', 'created_by'])->select(sprintf('%s.*', (new Lead())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'lead_show';
-                $editGate      = 'lead_edit';
-                $deleteGate    = 'lead_delete';
+                $viewGate = 'lead_show';
+                $editGate = 'lead_edit';
+                $deleteGate = 'lead_delete';
                 $crudRoutePart = 'leads';
 
                 return view('partials.datatablesActions', compact(
-                    'viewGate',
-                    'editGate',
-                    'deleteGate',
-                    'crudRoutePart',
-                    'row'
-                ));
+                'viewGate',
+                'editGate',
+                'deleteGate',
+                'crudRoutePart',
+                'row'
+            ));
             });
 
             $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : "";
+                return $row->id ? $row->id : '';
             });
             $table->editColumn('lead_title', function ($row) {
-                return $row->lead_title ? $row->lead_title : "";
+                return $row->lead_title ? $row->lead_title : '';
             });
             $table->addColumn('assign_user_name', function ($row) {
                 return $row->assign_user ? $row->assign_user->name : '';
@@ -65,8 +66,19 @@ class LeadsController extends Controller
             $table->editColumn('qualified', function ($row) {
                 return $row->qualified ? Lead::QUALIFIED_RADIO[$row->qualified] : '';
             });
+            $table->editColumn('leads_doc', function ($row) {
+                if (!$row->leads_doc) {
+                    return '';
+                }
+                $links = [];
+                foreach ($row->leads_doc as $media) {
+                    $links[] = '<a href="' . $media->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>';
+                }
 
-            $table->rawColumns(['actions', 'placeholder', 'assign_user', 'status']);
+                return implode(', ', $links);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'assign_user', 'status', 'leads_doc']);
 
             return $table->make(true);
         }
@@ -78,18 +90,22 @@ class LeadsController extends Controller
     {
         abort_if(Gate::denies('lead_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $assign_users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $assign_users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $assign_clients = Client::all()->pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $assign_clients = Client::pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = Status::all()->pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $statuses = Status::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.leads.create', compact('assign_users', 'assign_clients', 'statuses'));
+        return view('admin.leads.create', compact('assign_clients', 'assign_users', 'statuses'));
     }
 
     public function store(StoreLeadRequest $request)
     {
         $lead = Lead::create($request->all());
+
+        foreach ($request->input('leads_doc', []) as $file) {
+            $lead->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('leads_doc');
+        }
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $lead->id]);
@@ -102,20 +118,34 @@ class LeadsController extends Controller
     {
         abort_if(Gate::denies('lead_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $assign_users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $assign_users = User::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $assign_clients = Client::all()->pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $assign_clients = Client::pluck('contact_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $statuses = Status::all()->pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $statuses = Status::pluck('status', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $lead->load('assign_user', 'assign_client', 'status', 'created_by');
 
-        return view('admin.leads.edit', compact('assign_users', 'assign_clients', 'statuses', 'lead'));
+        return view('admin.leads.edit', compact('assign_clients', 'assign_users', 'lead', 'statuses'));
     }
 
     public function update(UpdateLeadRequest $request, Lead $lead)
     {
         $lead->update($request->all());
+
+        if (count($lead->leads_doc) > 0) {
+            foreach ($lead->leads_doc as $media) {
+                if (!in_array($media->file_name, $request->input('leads_doc', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $lead->leads_doc->pluck('file_name')->toArray();
+        foreach ($request->input('leads_doc', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $lead->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('leads_doc');
+            }
+        }
 
         return redirect()->route('admin.leads.index');
     }

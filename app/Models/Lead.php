@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use \DateTimeInterface;
 use App\Traits\Auditable;
 use App\Traits\MultiTenantModelTrait;
 use Carbon\Carbon;
@@ -11,22 +12,29 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use \DateTimeInterface;
 
 class Lead extends Model implements HasMedia
 {
-    use SoftDeletes, MultiTenantModelTrait, InteractsWithMedia, Auditable, HasFactory;
+    use SoftDeletes;
+    use MultiTenantModelTrait;
+    use InteractsWithMedia;
+    use Auditable;
+    use HasFactory;
 
-    public $table = 'leads';
-
-    const QUALIFIED_RADIO = [
+    public const QUALIFIED_RADIO = [
         'Yes' => 'Yes',
         'No'  => 'No',
     ];
 
+    public $table = 'leads';
+
     public static $searchable = [
         'lead_title',
         'lead_description',
+    ];
+
+    protected $appends = [
+        'leads_doc',
     ];
 
     protected $dates = [
@@ -50,15 +58,10 @@ class Lead extends Model implements HasMedia
         'created_by_id',
     ];
 
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
-
     public static function boot()
     {
         parent::boot();
-        Lead::observe(new \App\Observers\LeadActionObserver);
+        Lead::observe(new \App\Observers\LeadActionObserver());
     }
 
     public function registerMediaConversions(Media $media = null): void
@@ -92,8 +95,18 @@ class Lead extends Model implements HasMedia
         return $this->belongsTo(Status::class, 'status_id');
     }
 
+    public function getLeadsDocAttribute()
+    {
+        return $this->getMedia('leads_doc');
+    }
+
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

@@ -40,6 +40,9 @@
                                 {{ trans('cruds.lead.fields.qualified') }}
                             </th>
                             <th>
+                                {{ trans('cruds.lead.fields.leads_doc') }}
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -67,6 +70,13 @@
                                 </td>
                                 <td>
                                     {{ App\Models\Lead::QUALIFIED_RADIO[$lead->qualified] ?? '' }}
+                                </td>
+                                <td>
+                                    @foreach($lead->leads_doc as $key => $media)
+                                        <a href="{{ $media->getUrl() }}" target="_blank">
+                                            {{ trans('global.view_file') }}
+                                        </a>
+                                    @endforeach
                                 </td>
                                 <td>
                                     @can('lead_show')
