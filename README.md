@@ -8,6 +8,8 @@
 ### DiceCRM 
 DiceCRM is an open source CRM tool to manage projects, clients, leads, appointments, and users. DiceCRM is a free, open-source, and self-hosted platform based on Laravel Framework 8.
 
+[![Download Dice CRM](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/dice-crm/files/latest/download)
+
 _Current Version: 0.0.5_
 
 <img src="/DiceCRM.png" alt="DiceCRM"/>
@@ -53,6 +55,8 @@ Password: password_ <br/>
 
 ### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+
 
 ### License
 This project is licensed under an [MIT license](https://github.com/RaamAnalyst/DiceCRM/blob/main/LICENSE).
