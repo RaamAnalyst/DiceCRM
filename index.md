@@ -5,7 +5,7 @@ DiceCRM is an open source CRM tool to manage projects, clients, leads, appointme
 
 _Current Version: 0.0.1_
 
-Watch DiceCRM in action in the DEMO as follows:
+Watch **DiceCRM DEMO** as follows:
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=bwEWeTNsVwc" target="_blank"><img src="http://img.youtube.com/vi/bwEWeTNsVwc/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="512" height="350" border="10" /></a>
