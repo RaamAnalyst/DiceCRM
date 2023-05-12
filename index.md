@@ -7,8 +7,9 @@ _Current Version: 0.0.1_
 
 Watch **DiceCRM DEMO** as follows:
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=bwEWeTNsVwc" target="_blank"><img src="http://img.youtube.com/vi/bwEWeTNsVwc/0.jpg" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=f1vnraoYW3s" target="_blank"><img src="http://img.youtube.com/vi/f1vnraoYW3s/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="512" height="350" border="10" /></a>
+
 
 ### Features of DiceCRM
 It includes several advanced features as follows:
