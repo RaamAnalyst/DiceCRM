@@ -8,6 +8,10 @@ _Current Version: 0.0.1_
 <img src="https://raamanalyst.github.io/DiceCRM/DiceCRM.png" alt="DiceCRM"/>
 [(![image](https://github.com/RaamAnalyst/DiceCRM/assets/10476645/9a518b0f-b9f3-4a60-9f25-f34a2988699e))](https://youtu.be/bwEWeTNsVwc)
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=bwEWeTNsVwc
+" target="_blank"><img src="http://img.youtube.com/vi/bwEWeTNsVwc/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 ### Features of DiceCRM
 It includes several advanced features as follows:
 
