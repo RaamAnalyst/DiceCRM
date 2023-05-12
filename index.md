@@ -21,7 +21,6 @@ It includes several advanced features as follows:
 - Manage Industries, Departments, and Status
 - User Alerts and Notifications
 - User Management
-- Messaging System
 - Multi-tenancy Architecture
 - Dashboard Summary
 
